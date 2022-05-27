@@ -1,0 +1,44 @@
+{
+	"framework": {
+		"ox": true,
+		"esx": false,
+	},
+	"statebag": {
+		"set": true,
+	},
+	"name": "Pillbox Hospital",
+	"id": 61,
+	"size": 0.7,
+	"color": 23,
+	"npc": {
+		"x": 311.57,
+		"y": -594.01,
+		"z": 43.28,
+		"h": 340.94,
+	},
+	"treatmentcostmoney": true,
+	"treatment": {
+		"price": 500,
+	},
+	"bandage": {
+		"price": 300,
+	},
+	"bleeding": {
+		"set": true,
+		"start": 150,
+		"finish": 190,
+		"shake": 1.0,
+	},
+	"knockout": {
+		"set": true,
+		"start": 150,
+	},
+	"damagedwalk": {
+		"set": true,
+		"start": 150,
+		"finish": 190,
+	},
+	"versioncheck": false,
+	"debug": true,
+	"distance": 3.5
+}
