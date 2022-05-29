@@ -25,7 +25,7 @@ local function onCheckIn()
 			icon = 'notes-medical',
 			iconColor = 'white'
 			})
-			StartScreenEffect('DrugsTrevorClownsFightOut', - 1, true)
+			StartScreenEffect('HeistTripSkipFade', - 1, true)
 			Wait(40000)
 			StopAllScreenEffects(cache.ped)
 			ClearPedTasksImmediately(cache.ped)
