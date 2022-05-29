@@ -1,40 +1,36 @@
 lib.locale()
-local anim, dict = 'move_m@_idles@shake_off', 'shakeoff_1'
-
 ---@param functions
-local function animation()
-	lib.requestAnimDict(anim)
-	while not HasAnimDictLoaded(anim) do
-		Wait(0)
-	end
-	TaskPlayAnim(cache.ped, anim, dict, 3.0, - 3.0, - 1, 1, 0, false, false, false)
-end
-
 local function onCheckIn()
 	SetEntityHealth(cache.ped, 200)
-	animation()
-	local ox_inventory = exports.ox_inventory
-	ox_inventory:Progress({
-		duration = 3500,
-		position = 'bottom',
-		label = locale('being_treated')
-	}, function(cancel)
-		if not cancel then
-			lib.notify({
-				title = locale('hospital_name'),
-				description = locale('player_treated'),
-				position = 'top',
-				duration = 5000,
-				style = {
-					backgroundColor = '#7fa995',
-					color = 'white'
-				},
-				icon = 'notes-medical',
-				iconColor = 'white'
-			})
-			ClearPedTasksImmediately(cache.ped)
-		end
-	end)
+	if lib.progressCircle({
+        duration = 3500,
+        position = 'bottom',
+        useWhileDead = false,
+        canCancel = true,
+        disable = {
+            car = true,
+        },
+        anim = {
+            dict = 'move_m@_idles@shake_off',
+            clip = 'shakeoff_1'
+        },
+    }) then
+      lib.notify({
+	 title = locale('hospital_name'),
+	 description = locale('player_treated'),
+	 position = 'top',
+	 duration = 5000,
+	 style = {
+	     backgroundColor = '#7fa995',
+	     color = 'white'
+	 },
+          icon = 'notes-medical',
+	  iconColor = 'white'
+      })
+	 ClearPedTasksImmediately(cache.ped)
+      else
+        print('canceled')
+    end
 end
 
 ---@param events
@@ -74,7 +70,7 @@ RegisterNetEvent('treatment', function()
 end)
 elseif not cfg.treatmentcostmoney then
 	onCheckIn()
-	end
+    end
 end)
 
 RegisterNetEvent('bandage', function()
@@ -107,5 +103,6 @@ RegisterNetEvent('bandage', function()
 			iconColor = 'white'
 		})
 	end
- end)
+    end)
 end)
+
