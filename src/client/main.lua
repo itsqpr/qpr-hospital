@@ -5,33 +5,34 @@ local function onCheckIn()
 	if lib.progressCircle({
         duration = 3500,
         position = 'bottom',
-        useWhileDead = false,
-        canCancel = true,
         disable = {
-            car = true,
+	    move = true,
         },
         anim = {
             dict = 'move_m@_idles@shake_off',
             clip = 'shakeoff_1'
         },
     }) then
-      lib.notify({
-	 title = locale('hospital_name'),
-	 description = locale('player_treated'),
-	 position = 'top',
-	 duration = 5000,
-	 style = {
-	     backgroundColor = '#7fa995',
-	     color = 'white'
-	 },
-          icon = 'notes-medical',
-	  iconColor = 'white'
-      })
-	 ClearPedTasksImmediately(cache.ped)
-      else
+	lib.notify({
+			title = locale('hospital_name'),
+			description = locale('player_treated'),
+			position = 'top',
+			duration = 5000,
+			style = {
+				backgroundColor = '#7fa995',
+				color = 'white'
+			},
+			icon = 'notes-medical',
+			iconColor = 'white'
+			})
+			StartScreenEffect('DrugsTrevorClownsFightOut', - 1, true)
+			Wait(40000)
+			StopAllScreenEffects(cache.ped)
+			ClearPedTasksImmediately(cache.ped)
+    else
         print('canceled')
     end
-end
+ end
 
 ---@param events
 RegisterNetEvent('treatment', function()
