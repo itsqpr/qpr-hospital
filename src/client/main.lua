@@ -4,6 +4,7 @@ local function onCheckIn()
 	SetEntityHealth(cache.ped, 200)
 	if lib.progressCircle({
         duration = 3500,
+        label = '',
         position = 'bottom',
         disable = {
 	    move = true,
