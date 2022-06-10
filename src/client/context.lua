@@ -53,7 +53,7 @@ distance = cfg.distance
 ---@param debug
 ---@return command
 if cfg.debug then
-RegisterCommand(locale('context_debug'), function()
+RegisterCommand('debug:hospital', function()
 	openContext()
  end)
 end

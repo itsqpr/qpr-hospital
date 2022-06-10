@@ -23,26 +23,26 @@ lib.callback.register('treatment', function(source)
 		cache = false
 	end
 
-while cache == nil do Wait(50) end; return cache end)
+	while cache == nil do Wait(50) end; return cache end)
 
-lib.callback.register("bandage", function(source)
-	local src = source
-	local cache = nil
+	lib.callback.register("bandage", function(source)
+		local src = source
+		local cache = nil
 
-	if ox_inventory:GetItem(src, 'money').count >= 300 then
-		ox_inventory:RemoveItem(src, 'money', cfg.bandage.price)
-		ox_inventory:AddItem(src, 'bandage', 1)
-		cache = true
-	else
-		cache = false
-	end
+		if ox_inventory:GetItem(src, 'money').count >= 300 then
+			ox_inventory:RemoveItem(src, 'money', cfg.bandage.price)
+			ox_inventory:AddItem(src, 'bandage', 1)
+			cache = true
+		else
+			cache = false
+		end
 
-while cache == nil do Wait(50) end; return cache end)
+		while cache == nil do Wait(50) end; return cache end)
 
 ---@param player groups
 ---@return hospital state bag
 if cfg.framework.esx then
-	RegisterCommand(locale('hospital_toggle'), function(playerId, args, rawCommand)
+	RegisterCommand('toggle:hospital', function(playerId, args, rawCommand)
 		local xPlayer = ESX.GetPlayerFromId(playerId)
 		if not xPlayer then return end
 
@@ -62,7 +62,7 @@ if cfg.framework.esx then
 		})
 	end)
 elseif cfg.framework.ox then
-	lib.addCommand('group.admin', locale('hospital_toggle'), function(args, rawCommand)
+	lib.addCommand('group.admin', 'toggle:hospital', function(args, rawCommand)
 		GlobalState.hospitalState = not GlobalState.hospitalState
 		local hospitalState = GlobalState.hospitalState and 'open' or 'closed'
 

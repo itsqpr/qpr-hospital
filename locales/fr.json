@@ -17,8 +17,5 @@
 	"medical_attention": "Vous avez besoin de soins médicaux!",
 	"lost_balance": "Vous avez trébuché et perdu l'équilibre...",
 	"dazed": "Étourdi",
-	"bandage": "Le médecin vous a donné %s pansement!",
-	"context_debug": "debug:context",
-	"effect_debug": "stop:effect",
-	"hospital_toggle": "pillbox:toggle"
+	"bandage": "Le médecin vous a donné %s pansement!"
 }

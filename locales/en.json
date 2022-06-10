@@ -17,8 +17,5 @@
 	"medical_attention": "You need medical attention!",
 	"lost_balance": "You tripped and lost your balance...",
 	"dazed": "Dazed",
-	"bandage": "The doctor gave you %s bandage.",
-	"context_debug": "debug:context",
-	"effect_debug": "stop:effect",
-	"hospital_toggle": "pillbox:toggle"
+	"bandage": "The doctor gave you %s bandage."
 }
