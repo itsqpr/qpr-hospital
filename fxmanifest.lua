@@ -2,7 +2,7 @@ fx_version 'cerulean'
 
 description 'Got bored so why not?'
 author 'waddle_dee'
-version '0.0.4'
+version '0.0.6'
 repository 'https://github.com/waddle1010/wd-hospital'
 
 lua54 'yes'
