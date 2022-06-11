@@ -9,7 +9,7 @@ lib.locale()
 local ox_inventory = exports.ox_inventory
 GlobalState.hospitalState = cfg.statebag.set -- Recommend leaving this set as 'true' in config.json. If set 'false' you will need to run the command below to enable treatment.
 
----@param menu options
+---@return menu option callbacks
 lib.callback.register('treatment', function(source)
 	if not GlobalState.hospitalState then return end
 
@@ -23,52 +23,30 @@ lib.callback.register('treatment', function(source)
 		cache = false
 	end
 
-	while cache == nil do Wait(50) end; return cache end)
+while cache == nil do Wait(50) end; return cache end)
 
-	lib.callback.register("bandage", function(source)
-		local src = source
-		local cache = nil
+lib.callback.register("bandage", function(source)
+	local src = source
+	local cache = nil
 
-		if ox_inventory:GetItem(src, 'money').count >= 300 then
-			ox_inventory:RemoveItem(src, 'money', cfg.bandage.price)
-			ox_inventory:AddItem(src, 'bandage', 1)
-			cache = true
-		else
-			cache = false
-		end
+	if ox_inventory:GetItem(src, 'money').count >= 300 then
+		ox_inventory:RemoveItem(src, 'money', cfg.bandage.price)
+		ox_inventory:AddItem(src, 'bandage', 1)
+		cache = true
+	else
+		cache = false
+	end
 
-		while cache == nil do Wait(50) end; return cache end)
+while cache == nil do Wait(50) end; return cache end)
 
----@param player groups
----@return hospital state bag
-if cfg.framework.esx then
-	RegisterCommand('toggle:hospital', function(playerId, args, rawCommand)
-		local xPlayer = ESX.GetPlayerFromId(playerId)
-		if not xPlayer then return end
+---@return hospital statebag
+lib.addCommand('group.admin', 'toggle:hospital', function(args, rawCommand)
+	GlobalState.hospitalState = not GlobalState.hospitalState
 
-		local group = xPlayer.getGroup()
-		if group ~= 'admin' and group ~= 'superadmin' then
-			return TriggerClientEvent('chat:addMessage', playerId, {
-				template = '<div class="chat-message text-system">ERROR: <span class="text-white">You have insufficient permission to use this command.</span></div>',
-			})
-		end
+	local hospitalState = GlobalState.hospitalState and 'open' or 'closed'
 
-		GlobalState.hospitalState = not GlobalState.hospitalState
-		local hospitalState = GlobalState.hospitalState and 'open' or 'closed'
-
-		TriggerClientEvent('chat:addMessage', - 1, {
-			template = '<div class="chat-message text-system">Pillbox Hospital <span class="text-white">is now {0}.</span></div>',
-			args = { hospitalState }
-		})
-	end)
-elseif cfg.framework.ox then
-	lib.addCommand('group.admin', 'toggle:hospital', function(args, rawCommand)
-		GlobalState.hospitalState = not GlobalState.hospitalState
-		local hospitalState = GlobalState.hospitalState and 'open' or 'closed'
-
-		TriggerClientEvent('chat:addMessage', - 1, {
-			template = '<div class="chat-message text-system">Pillbox Hospital <span class="text-white">is now {0}.</span></div>',
-			args = { hospitalState }
-		})
-	end)
-end
+	TriggerClientEvent('chat:addMessage', - 1, {
+		template = '<div class="chat-message text-system">Pillbox Hospital <span class="text-white">is now {0}.</span></div>',
+		args = { hospitalState }
+	})
+end)
