@@ -19,7 +19,6 @@ dependencies {
 shared_script '@ox_lib/init.lua'
 
 shared_scripts {
-	'@es_extended/imports.lua',
 	'src/init.lua',
 }
 
