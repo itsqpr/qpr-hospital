@@ -3,6 +3,23 @@ local timeout, knockedOut = 15, 50
 local playerState = LocalPlayer.state
 
 ---@param functions
+local function notify(str)
+	local data = w.notify[str]
+
+	lib.notify({
+		title = data.title,
+		description = data.description,
+		position = data.position,
+		duration = data.duration,
+		style = {
+			backgroundColor = data.backgroundColor,
+			color = data.color
+		},
+		icon = data.icon,
+		iconColor = data.iconColor
+	})
+end
+
 ---@return bleeding
 local function isBleeding()
 	if cfg.framework then
@@ -10,18 +27,7 @@ local function isBleeding()
 		if not LocalPlayer.state.bleeding then
 			playerState.bleeding = true
 		end
-		lib.notify({
-			title = locale('your_bleeding'),
-			description = locale('medical_attention'),
-			position = 'top',
-			duration = 5000,
-			style = {
-				backgroundColor = '#b57f7f',
-				color = 'white'
-			},
-			icon = 'notes-medical',
-			iconColor = 'white'
-		})
+		notify('playerBleeding')
 		ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', cfg.bleeding.shake)
 	end
 	Wait(2800)
@@ -67,18 +73,7 @@ if cfg.knockout.set then
 				SetPedToRagdoll(entity, 1000, 1000, 0, 0, 0, 0)
 				SetPlayerInvincible(cache.ped, true)
 				timeout = 20
-				lib.notify({
-					duration = 18000,
-					title = locale('dazed'),
-					description = locale('lost_balance'),
-					position = 'top',
-					style = {
-						backgroundColor = '#9d85ac',
-						color = 'white'
-					},
-					icon = 'brain',
-					iconColor = 'white'
-				})
+				notify('playerKnockedOut')
 			end
 		end
 
