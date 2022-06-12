@@ -18,6 +18,7 @@ Hospital treatment resource to manage player health / damages. Compatible with e
 - Once point is hit, health decreases with visual effects.
 - Knockout ragdoll effect when player health hits a certain point in hand-to-hand combat.
 - Flexible customization for all damage notifications. 
+- Configurable anti-spam jump, if people choose to run away from combat. *(Why not?)*
 
 ### Treatment
 - Hospital treatment system for *any* damages you may have.
