@@ -23,9 +23,9 @@ local function onCheckIn()
 	if lib.progressCircle({
         duration = 3500,
         position = 'bottom',
-				label = '',
+	label = '',
         disable = {
-					  move = true,
+	    move = true,
         },
         anim = {
             dict = 'move_m@_idles@shake_off',
