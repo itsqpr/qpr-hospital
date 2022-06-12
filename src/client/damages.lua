@@ -96,3 +96,24 @@ if cfg.knockout.set then
 	end
  end)
 end
+
+---@return anti-spam jump
+local chance = 0.8 -- example: 80% = 0.8, 75% = 0.75, 32% = 0.32
+print('chance: '.. chance)
+
+local playerState = LocalPlayer.state
+playerState.fellOver = true
+
+SetInterval(function()
+	while playerState.fellOver do
+	Wait(100)
+	local state = cache.ped
+	if IsPedOnFoot(state) and not IsPedSwimming(state) and (IsPedRunning(state) or IsPedSprinting(state)) and not IsPedClimbing(state) and IsPedJumping(state) and not IsPedRagdoll(state) then
+		local result = math.random()
+		if result < chance then
+			Wait(600)
+			SetPedToRagdoll(state, 5000, 1, 2)
+		end
+	end
+ end
+end)
