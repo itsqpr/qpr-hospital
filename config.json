@@ -1,24 +1,41 @@
 {
 	"framework": {
-		"ox": true,
-		"esx": false,
+		"ox": false,
+		"esx": true,
+	},
+	"utility": {
+		"qtarget": false,
+		"lib": true,
+	},
+	"lib_point": {
+		"x": -1852.7981,
+		"y": -338.5424,
+		"z": 49.4441,
+	},
+	"general": {
+		"versioncheck": true,
+		"debug": true,
 	},
 	"statebag": {
 		"set": true,
 	},
-	"name": "Pillbox Hospital",
-	"id": 61,
-	"size": 0.7,
-	"color": 23,
-	"npc": {
-		"x": 311.57,
-		"y": -594.01,
-		"z": 43.28,
-		"h": 340.94,
+	"hospital": {
+		"name": "Ocean Medical Center",
+		"id": 61,
+		"size": 0.7,
+		"color": 23,
 	},
-	"treatmentcostmoney": true,
+	"npc": {
+		"model": "s_m_m_doctor_01",
+		"x": -1851.5889,
+		"y": -336.8078,
+		"z": 49.4477,
+		"h": 142.0032,
+	},
 	"treatment": {
-		"price": 500,
+		"costmoney": true,
+		"price": 2000,
+		"effectduration": 40000,
 	},
 	"bandage": {
 		"price": 300,
@@ -38,7 +55,8 @@
 		"start": 150,
 		"finish": 190,
 	},
-	"versioncheck": false,
-	"debug": true,
-	"distance": 3.5
+	"spam_jump": {
+		"set": true,
+		"chance": 0.8
+	}
 }

@@ -1,18 +1,17 @@
 lib.locale()
-w = {}
 
-w.notify = {
-
+wd = {}
+wd.notify = {
 	-- treatment
 	['playerTreated'] = {
 		title = locale('hospital_name'),
 		description = locale('player_treated'),
 		position = 'top',
 		duration = 5000,
-		backgroundColor = '#7fa995',
+		backgroundColor = '#475569',
 		color = 'white',
 		icon = 'notes-medical',
-		iconColor = 'white'
+		iconColor = 'darkseagreen'
 	},
 
 	['playerBilled'] = {
@@ -20,10 +19,10 @@ w.notify = {
 		description = locale('player_billed'),
 		position = 'top',
 		duration = 5000,
-		backgroundColor = '#6187a2',
+		backgroundColor = '#475569',
 		color = 'white',
 		icon = 'file-invoice-dollar',
-		iconColor = 'white'
+		iconColor = 'darkseagreen'
 	},
 
 	['noMoney'] = {
@@ -31,10 +30,10 @@ w.notify = {
 		description = locale('no_money'),
 		position = 'top',
 		duration = 3500,
-		backgroundColor = '#b57f7f',
+		backgroundColor = '#475569',
 		color = 'white',
-		icon = 'notes-medical',
-		iconColor = 'white'
+		icon = 'file-invoice-dollar',
+		iconColor = 'lightcoral'
 	},
 
 	['boughtBandage'] = {
@@ -42,21 +41,10 @@ w.notify = {
 		description = locale('bandage'),
 		position = 'top',
 		duration = 5000,
-		backgroundColor = '#7fa995',
+		backgroundColor = '#475569',
 		color = 'white',
 		icon = 'notes-medical',
-		iconColor = 'white'
-	},
-
-	['secondNoMoney'] = {
-		title = locale('hospital_name'),
-		description = locale('second_no_money'),
-		position = 'top',
-		duration = 3500,
-		backgroundColor = '#b57f7f',
-		color = 'white',
-		icon = 'notes-medical',
-		iconColor = 'white'
+		iconColor = 'darkseagreen'
 	},
 
 	-- damages
@@ -65,20 +53,20 @@ w.notify = {
 		description = locale('medical_attention'),
 		position = 'top',
 		duration = 5000,
-		backgroundColor = '#b57f7f',
+		backgroundColor = '#475569',
 		color = 'white',
 		icon = 'notes-medical',
-		iconColor = 'white'
+		iconColor = 'lightcoral'
 	},
 
 	['playerKnockedOut'] = {
-		title = locale('dazed'),
+		title = locale('knocked_out'),
 		description = locale('lost_balance'),
 		position = 'top',
 		duration = 18000,
-		backgroundColor = '#9d85ac',
+		backgroundColor = '#475569',
 		color = 'white',
 		icon = 'brain',
-		iconColor = 'white'
+		iconColor = 'lightcoral'
 	}
 }

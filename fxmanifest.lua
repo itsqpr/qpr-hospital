@@ -1,9 +1,9 @@
 fx_version 'cerulean'
 
-description 'Got bored so why not?'
 author 'waddle_dee'
-version '0.0.8'
+description 'Player management stuff'
 repository 'https://github.com/waddle1010/wd-hospital'
+version '0.0.8'
 
 lua54 'yes'
 
@@ -19,16 +19,16 @@ dependencies {
 shared_script '@ox_lib/init.lua'
 
 shared_scripts {
-	'src/init.lua',
+	'public/init.lua',
 }
 
 client_scripts {
-	'src/utils/*.lua',
-	'src/client/*.lua',
+	'public/utils/*.lua',
+	'public/client/*.lua',
 }
 
 server_scripts {
-	'src/server/*.lua',
+	'public/server/*.lua',
 }
 
 files {

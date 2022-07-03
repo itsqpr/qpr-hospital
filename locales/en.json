@@ -1,5 +1,5 @@
 {
-	"hospital_name": "Pillbox Hospital",
+	"hospital_name": "Medical Center",
 	"medical_treatment": "Medical Treatment",
 	"do_you_wish": "Do you wish to receive treatment?",
 	"need_bandage": "Need a bandage?",
@@ -8,14 +8,12 @@
 	"second_description": "Visit a physician to receive medical treatment or diagnosis.",
 	"metadata": "You will then be escorted to the treatment room.",
 	"target_label": "Check In",
-	"no_money": "You need $%s in order to get treated.",
-	"second_no_money": "You need $%s to purchase a bandage.",
+	"no_money": "You do not have enough cash!",
 	"player_billed": "You have been billed $%s.",
-	"being_treated": "Being treated...",
-	"player_treated": "You have been treated and can go on your way!",
-	"your_bleeding": "You are bleeding...",
+	"player_treated": "You have been treated and can go on your way.",
+	"your_bleeding": "You are bleeding",
 	"medical_attention": "You need medical attention!",
-	"lost_balance": "You tripped and lost your balance...",
-	"dazed": "Dazed",
-	"bandage": "The doctor gave you %s bandage."
+	"lost_balance": "You tripped and lost your balance.",
+	"knocked_out": "Knocked Out",
+	"bandage": "The doctor gave you a bandage."
 }

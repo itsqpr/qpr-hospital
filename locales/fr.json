@@ -8,14 +8,12 @@
 	"second_description": "Consulter un médecin pour recevoir un traitement médical ou un diagnostic.",
 	"metadata": "Vous serez ensuite escorté jusqu'à la salle de soins.",
 	"target_label": "Enregistrement",
-	"no_money": "Vous avez besoin de €%s pour être soigné.",
-	"second_no_money": "Vous avez besoin de €%s pour acheter un pansement.",
+	"no_money": "Vous n'avez pas assez d'argent!",
 	"player_billed": "Vous avez été facturé €%s.",
-	"being_treated": "Être traité...",
-	"player_treated": "Vous avez été soigné et pouvez continuer votre chemin!",
-	"your_bleeding": "Vous saignez...",
+	"player_treated": "Vous avez été soigné et pouvez continuer votre chemin.",
+	"your_bleeding": "Vous saignez.",
 	"medical_attention": "Vous avez besoin de soins médicaux!",
-	"lost_balance": "Vous avez trébuché et perdu l'équilibre...",
-	"dazed": "Étourdi",
-	"bandage": "Le médecin vous a donné %s pansement!"
+	"lost_balance": "Vous avez trébuché et perdu l'équilibre.",
+	"knocked_out": "Assommé",
+	"bandage": "Le médecin vous a donné a pansement!"
 }

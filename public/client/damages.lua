@@ -1,10 +1,10 @@
 lib.locale()
+
 local timeout, knockedOut = 15, 50
 local playerState = LocalPlayer.state
 
----@param functions
 local function notify(str)
-	local data = w.notify[str]
+	local data = wd.notify[str]
 
 	lib.notify({
 		title = data.title,
@@ -20,7 +20,6 @@ local function notify(str)
 	})
 end
 
----@return bleeding
 local function isBleeding()
 	if cfg.framework then
 		SetEntityHealth(cache.ped, GetEntityHealth(cache.ped) - 2)
@@ -34,46 +33,38 @@ local function isBleeding()
 end
 
 if cfg.bleeding.set then
-	SetInterval(function()
+	isHurt = SetInterval(function()
 		if GetEntityHealth(cache.ped) < cfg.bleeding.start then
 		isBleeding()
 	elseif GetEntityHealth(cache.ped) > cfg.bleeding.finish then
 		playerState.bleeding = false
 	end
- end)
-end
+ end) end
 
----@return damaged walk
 playerState.hurt = true
 if cfg.damagedwalk.set then
-	CreateThread(function()
-		while playerState.hurt do
-		Wait(0)
+	damagedWalk = SetInterval(function()
 		if GetEntityHealth(cache.ped) <= cfg.damagedwalk.start then
-			lib.requestAnimSet('move_m@injured')
-			SetPedMovementClipset(cache.ped, 'move_m@injured', true)
-		elseif LocalPlayer.state.hurt and GetEntityHealth(cache.ped) > cfg.damagedwalk.finish then
-			ResetPedMovementClipset(cache.ped)
-			ResetPedStrafeClipset(cache.ped)
-		end
+		lib.requestAnimSet('move_m@injured')
+		SetPedMovementClipset(cache.ped, 'move_m@injured', true)
+	elseif LocalPlayer.state.hurt and GetEntityHealth(cache.ped) > cfg.damagedwalk.finish then
+		ResetPedMovementClipset(cache.ped)
+		ResetPedStrafeClipset(cache.ped)
 	end
- end)
-end
+ end) end
 
----@return knockout
 playerState.knockedOut = false
+
 if cfg.knockout.set then
-	CreateThread(function()
-		while true do
-		Wait(0)
+	Dazed = SetInterval(function()
 		local entity = GetPlayerPed(-1)
 		if IsPedInMeleeCombat(cache.ped, entity) then
 			if GetEntityHealth(cache.ped, entity) < cfg.knockout.start then
 				playerState.knockedOut = true
 				SetPedToRagdoll(entity, 1000, 1000, 0, 0, 0, 0)
-				SetPlayerInvincible(cache.ped, true)
-				timeout = 20
-				notify('playerKnockedOut')
+			  SetPlayerInvincible(cache.ped, true)
+			  timeout = 20
+			  notify('playerKnockedOut')
 			end
 		end
 
@@ -84,31 +75,23 @@ if cfg.knockout.set then
 					timeout = timeout - 1
 					SetEntityHealth(cache.ped, entity, 200)
 				end
-			else
-				playerState.knockedOut = false
+		else
+			playerState.knockedOut = false
+		end
+	end
+end) end
+
+if cfg.spam_jump.set then
+	local chance = cfg.spam_jump.chance
+	playerState.fellOver = true
+
+	fellOver = SetInterval(function()
+		local state = cache.ped
+		if IsPedOnFoot(state) and not IsPedSwimming(state) and (IsPedRunning(state) or IsPedSprinting(state)) and not IsPedClimbing(state) and IsPedJumping(state) and not IsPedRagdoll(state) then
+			local result = math.random()
+			if result < chance then
+				Wait(600)
+				SetPedToRagdoll(state, 5000, 1, 2)
 			end
 		end
-	end
- end)
-end
-
----@return anti-spam jump
-local chance = 0.8 -- example: 80% = 0.8, 75% = 0.75, 32% = 0.32
-print('chance: '.. chance)
-
-local playerState = LocalPlayer.state
-playerState.fellOver = true
-
-SetInterval(function()
-	while playerState.fellOver do
-	Wait(100)
-	local state = cache.ped
-	if IsPedOnFoot(state) and not IsPedSwimming(state) and (IsPedRunning(state) or IsPedSprinting(state)) and not IsPedClimbing(state) and IsPedJumping(state) and not IsPedRagdoll(state) then
-		local result = math.random()
-		if result < chance then
-			Wait(600)
-			SetPedToRagdoll(state, 5000, 1, 2)
-		end
-	end
- end
-end)
+end) end
