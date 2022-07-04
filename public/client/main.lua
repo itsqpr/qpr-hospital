@@ -1,7 +1,7 @@
 lib.locale()
 
 local function notify(str)
-	local data = wd.notify[str]
+	local data = qpr.notify[str]
 
 	lib.notify({
 		title = data.title,
@@ -54,4 +54,16 @@ RegisterNetEvent('bandage', function()
 	if success then notify('boughtBandage') elseif not success then
 		print('You need $%s in order to purchase a bandage.')
 		notify('noMoney') end end)
+end)
+
+-- Map blip
+CreateThread(function()
+	blip = AddBlipForCoord(cfg.npc.x, cfg.npc.y)
+	SetBlipSprite(blip, cfg.hospital.id)
+	SetBlipScale(blip, cfg.hospital.size)
+	SetBlipColour(blip, cfg.hospital.color)
+	SetBlipAsShortRange(blip, true)
+	BeginTextCommandSetBlipName('STRING')
+	AddTextComponentString(cfg.hospital.name)
+	EndTextCommandSetBlipName(blip)
 end)

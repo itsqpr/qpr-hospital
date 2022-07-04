@@ -49,9 +49,7 @@ if cfg.utility.lib then
 			end
 		end
 	end)
-end
-
-if cfg.utility.qtarget then
+elseif cfg.utility.qtarget then
 	local qtarget = exports.qtarget
 	local doctor = cfg.npc.model
 	print(doctor)
@@ -68,7 +66,7 @@ if cfg.utility.qtarget then
 	},
 	distance = 3.5
 	})
-end
+ end
 
 if cfg.general.debug then
 	RegisterCommand('debug:hospital', function()

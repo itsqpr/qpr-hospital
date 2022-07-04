@@ -1,2 +1,2 @@
-currentResourceName = GetCurrentResourceName() or "wd-hospital"
+currentResourceName = GetCurrentResourceName() or "qpr-hospital"
 cfg = json.decode(LoadResourceFile(currentResourceName, 'config.json'))

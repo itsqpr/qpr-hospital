@@ -1,8 +1,4 @@
 {
-	"framework": {
-		"ox": false,
-		"esx": true,
-	},
 	"utility": {
 		"qtarget": false,
 		"lib": true,

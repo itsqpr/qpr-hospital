@@ -1,7 +1,7 @@
 lib.locale()
 
-wd = {}
-wd.notify = {
+qpr = {}
+qpr.notify = {
 	-- treatment
 	['playerTreated'] = {
 		title = locale('hospital_name'),

@@ -4,7 +4,7 @@ local timeout, knockedOut = 15, 50
 local playerState = LocalPlayer.state
 
 local function notify(str)
-	local data = wd.notify[str]
+	local data = qpr.notify[str]
 
 	lib.notify({
 		title = data.title,
@@ -21,7 +21,7 @@ local function notify(str)
 end
 
 local function isBleeding()
-	if cfg.framework then
+	if true then
 		SetEntityHealth(cache.ped, GetEntityHealth(cache.ped) - 2)
 		if not LocalPlayer.state.bleeding then
 			playerState.bleeding = true

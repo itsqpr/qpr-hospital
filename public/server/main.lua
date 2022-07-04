@@ -2,7 +2,7 @@ local success, msg = lib.checkDependency('ox_lib', '2.5.2')
 success, msg = lib.checkDependency('ox_inventory', '2.8.8')
 if not success then error(msg) end
 
-if cfg.general.versioncheck then lib.versionCheck('waddle1010/wd-hospital') end
+if cfg.general.versioncheck then lib.versionCheck('itsqpr/qpr-hospital') end
 lib.locale()
 
 local ox_inventory = exports.ox_inventory

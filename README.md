@@ -1,7 +1,9 @@
 ## Framework
-This system was designed with the intention to move towards a more standalone / generic structure so it can be integrated into any framework. As of now, it will work without any alterations if you are using the latest updates to [ox_core](https://github.com/overextended/ox_core), and [es_extended](https://github.com/esx-framework/esx-legacy).
+This system was designed with the intention to move towards a more standalone / generic structure so it can be integrated into any framework. As of now, it does *not* require a framework, but does have a few dependencies.
 
 [Small Preview Video](https://gyazo.com/9aec4a41a5d4b13798f8e8917dd20383)
+
+[Cfx.re](https://forum.cfx.re/t/free-hospital-system/4874580)
 
 ## Dependencies
 ### [ox_lib](https://github.com/overextended/ox_lib) *(v2.5.2 or higher)*

@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 
-author 'waddle_dee'
+author 'Qpr'
 description 'Player management stuff'
-repository 'https://github.com/waddle1010/wd-hospital'
+repository 'https://github.com/itsqpr/qpr-hospital'
 version '0.0.8'
 
 lua54 'yes'
@@ -23,7 +23,6 @@ shared_scripts {
 }
 
 client_scripts {
-	'public/utils/*.lua',
 	'public/client/*.lua',
 }
 
